@@ -1,0 +1,489 @@
+/* Grundlegende Styles */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow: hidden; /* Verhindert Scrollen */
+    background-color: #f0f8ff; /* Standard Hintergrundfarbe */
+}
+
+/* Himmel mit Tag-Nacht-Zyklus */
+.sky {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1; /* Hinter dem Container */
+}
+
+#day-night-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Container für die App */
+.container {
+    position: relative;
+    z-index: 1; /* Über dem Himmel */
+    background-color: rgba(255, 255, 255, 0.85);
+    max-width: 500px;
+    margin: 30px auto;
+    padding: 25px;
+    border-radius: 20px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+/* Titel */
+h1 {
+    color: #2e8b57;
+    margin-bottom: 15px;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    text-align: center;
+    font-size: 2em;
+}
+
+/* Pflanzenarten auswählen */
+.plant-type-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.plant-type-container label {
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #2e8b57;
+}
+
+#plant-type-select {
+    padding: 8px;
+    width: 80%;
+    border: 2px solid #2e8b57;
+    border-radius: 5px;
+    font-size: 1em;
+    background-color: transparent;
+    color: #333;
+}
+
+/* Pflanzenbenennung */
+.name-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+#plant-name-input {
+    padding: 8px;
+    width: 60%;
+    border: 2px solid #2e8b57;
+    border-radius: 5px;
+    font-size: 1em;
+    background-color: transparent;
+    color: #333;
+}
+
+#name-submit-button {
+    padding: 8px 12px;
+    margin-left: 10px;
+    border: none;
+    background-color: #2e8b57;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s;
+}
+
+#name-submit-button:hover {
+    background-color: #3cb371;
+}
+
+#plant-name {
+    color: #2e8b57;
+    margin-top: 10px;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    text-align: center;
+    font-size: 1.5em;
+}
+
+/* Pflanzenanzeige mit Animationen */
+.plant-container {
+    position: relative;
+    margin: 20px auto;
+    width: 250px;
+    height: 250px;
+    overflow: hidden;
+}
+
+.plant-container img {
+    background-color: transparent;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.5s, opacity 0.5s;
+}
+
+.plant-container img:hover {
+    transform: scale(1.05);
+}
+
+/* Wasseranimation (CSS-basiert) */
+#water-animation {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.drop {
+    position: absolute;
+    bottom: 100%;
+    width: 10px;
+    height: 10px;
+    background-color: rgba(0, 191, 255, 0.7);
+    border-radius: 50%;
+    animation: drop 1s infinite;
+}
+
+.drop1 {
+    left: 20%;
+    animation-delay: 0s;
+}
+
+.drop2 {
+    left: 40%;
+    animation-delay: 0.2s;
+}
+
+.drop3 {
+    left: 60%;
+    animation-delay: 0.4s;
+}
+
+.drop4 {
+    left: 80%;
+    animation-delay: 0.6s;
+}
+
+.drop5 {
+    left: 50%;
+    animation-delay: 0.1s;
+}
+
+@keyframes drop {
+    0% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100px) scale(0.5);
+        opacity: 0;
+    }
+}
+
+/* Eintopf-Animation */
+#repot-animation {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.pot {
+    position: relative;
+    width: 60px;
+    height: 30px;
+    background-color: #8B4513;
+    border-radius: 5px 5px 0 0;
+    animation: repotMove 1s forwards;
+}
+
+.soil {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 10px;
+    background-color: #654321;
+    border-radius: 0 0 5px 5px;
+}
+
+.seed {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 10px;
+    height: 10px;
+    background-color: #FFD700;
+    border-radius: 50%;
+}
+
+@keyframes repotMove {
+    0% { transform: translateX(-50%) translateY(0); opacity: 1; }
+    50% { transform: translateX(-50%) translateY(-20px); opacity: 1; }
+    100% { transform: translateX(-50%) translateY(0); opacity: 1; }
+}
+
+/* Plop-Animation */
+#plop-animation {
+    position: absolute;
+    bottom: 50%;
+    left: 50%;
+    transform: translate(-50%, 50%);
+    width: 50px;
+    height: 50px;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.plop {
+    position: relative;
+    width: 20px;
+    height: 20px;
+    background-color: rgba(173, 216, 230, 0.8);
+    border-radius: 50%;
+    animation: plopEffect 0.5s forwards;
+}
+
+@keyframes plopEffect {
+    0% {
+        transform: scale(0);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.5);
+        opacity: 0.6;
+    }
+    100% {
+        transform: scale(2);
+        opacity: 0;
+    }
+}
+
+/* Sonnenlichtanimation */
+#sun-animation {
+    position: absolute;
+    top: -20px;
+    right: 10px;
+    width: 60px;
+    height: 60px;
+    background-color: transparent;
+    animation: sunEffect 1s forwards;
+    z-index: 1;
+}
+
+@keyframes sunEffect {
+    0% { opacity: 1; transform: rotate(0deg); }
+    100% { opacity: 0; transform: rotate(360deg); }
+}
+
+/* Ereignis-Overlay */
+#event-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 4;
+}
+
+.event-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    max-width: 80%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.event-content h3 {
+    margin-bottom: 10px;
+    color: #2e8b57;
+}
+
+.event-content p {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+#event-close-button {
+    padding: 8px 16px;
+    border: none;
+    background-color: #2e8b57;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s;
+}
+
+#event-close-button:hover {
+    background-color: #3cb371;
+}
+
+/* Animationen verstecken */
+.hidden {
+    display: none;
+}
+
+/* Statusanzeigen */
+.stats {
+    margin: 20px 0;
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+}
+
+.stats p {
+    font-size: 1.2em;
+    margin: 5px 0;
+    color: #333;
+}
+
+/* Steuerungskontrollen */
+.controls {
+    margin: 20px 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+.controls button {
+    padding: 12px 24px;
+    font-size: 1em;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    color: white;
+    flex: 1 1 45%;
+    max-width: 160px;
+}
+
+/* Button Farben */
+#repot-button {
+    background-color: #ff8c00;
+}
+
+#repot-button:hover {
+    background-color: #ffa500;
+}
+
+#water-button {
+    background-color: #1e90ff;
+}
+
+#water-button:hover {
+    background-color: #63b3ed;
+}
+
+#sun-button {
+    background-color: #ffd700;
+    color: #333;
+}
+
+#sun-button:hover {
+    background-color: #ffeb3b;
+}
+
+#fertilize-button {
+    background-color: #32cd32;
+}
+
+#fertilize-button:hover {
+    background-color: #66ff66;
+}
+
+#prune-button {
+    background-color: #ff6347;
+}
+
+#prune-button:hover {
+    background-color: #ff7f50;
+}
+
+#fast-forward-button {
+    background-color: #8a2be2;
+}
+
+#fast-forward-button:hover {
+    background-color: #a020f0;
+}
+
+/* Toast-Benachrichtigung Styles */
+#toast {
+    visibility: hidden;
+    min-width: 250px;
+    margin-left: -125px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 2px;
+    padding: 16px;
+    position: fixed;
+    z-index: 5;
+    left: 50%;
+    bottom: 30px;
+    font-size: 17px;
+}
+
+#toast.show {
+    visibility: visible;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+@keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 30px; opacity: 1;}
+}
+
+@keyframes fadeout {
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 0; opacity: 0;}
+}
+
+/* Hervorhebung des aktiven Buttons */
+.active-button {
+    box-shadow: 0 0 10px 2px #ff0;
+    transform: scale(1.05);
+    transition: transform 0.3s, box-shadow 0.3s;
+    background-color: #4CAF50;
+    color: white;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    .plant-container {
+        width: 200px;
+        height: 200px;
+    }
+
+    .controls button {
+        padding: 10px 20px;
+        margin: 4px;
+        font-size: 0.9em;
+    }
+
+    #plant-name-input {
+        width: 150px;
+    }
+
+    .stats {
+        gap: 10px;
+    }
+}

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planty - Dein virtueller Pflanzenfreund</title>
+    <!-- Content Security Policy -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; media-src 'self'; font-src 'self';">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="sky">
+        <video id="day-night-video" autoplay loop muted>
+            <source src="videos/day.mp4" type="video/mp4">
+            Dein Browser unterstützt keine Videos.
+        </video>
+    </div>
+    
+    <div class="container">
+        <h1>Planty</h1>
+        
+        <div class="plant-type-container" id="plant-type-container">
+            <label for="plant-type-select">Wähle eine Pflanzenart:</label>
+            <select id="plant-type-select">
+                <option value="fern">Farn</option>
+                <option value="cactus">Kaktus</option>
+                <option value="orchid">Orchidee</option>
+            </select>
+        </div>
+        
+        <div class="name-container" id="name-container">
+            <input type="text" id="plant-name-input" placeholder="Gib deiner Pflanze einen Namen">
+            <button id="name-submit-button">Bestätigen</button>
+        </div>
+        <h2 id="plant-name">Deine Pflanze</h2>
+        
+        <div class="plant-container">
+            <img id="plant-image" src="images/seed.png" alt="Deine Pflanze">
+        </div>
+        
+        <div class="stats">
+            <p>Wasser: <span id="water-level">50</span>%</p>
+            <p>Sonnenlicht: <span id="sun-level">50</span>%</p>
+            <p>Gesundheit: <span id="health-level">100</span>%</p>
+            <p>Erfolge: <span id="achievements">0</span></p>
+        </div>
+        
+        <div class="controls">
+            <button id="repot-button" class="control-button">Samen eintopfen</button>
+            <button id="water-button" class="control-button" style="display: none;">Gießen</button>
+            <button id="sun-button" class="control-button" style="display: none;">Sonnenlicht</button>
+            <button id="fertilize-button" class="control-button" style="display: none;">Düngen</button>
+            <button id="prune-button" class="control-button" style="display: none;">Schneiden</button>
+            <button id="fast-forward-button" class="control-button">Schnellvorlauf</button>
+        </div>
+
+        <div class="log" id="log">
+            <h3>Aufgaben-Log</h3>
+            <ul id="task-log"></ul>
+        </div>
+    </div>
+
+    <div id="toast" class="hidden"></div>
+
+    <script src="script.js" defer></script>
+</body>
+</html>
